@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Verify Identity | EduPro</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="login-body">
+    <div class="glass-container">
+        <div class="login-box">
+            <h2>Verify Account</h2>
+            <p style="color: #64748b; margin-bottom: 30px;">Enter the 6-digit code sent to <br><b>{{ email }}</b></p>
+            
+            <form id="otpForm">
+                <div class="otp-inputs">
+                    <input type="text" name="otp1" maxlength="1" onkeyup="moveFocus(this, 'otp2')" id="otp1">
+                    <input type="text" name="otp2" maxlength="1" onkeyup="moveFocus(this, 'otp3')" id="otp2">
+                    <input type="text" name="otp3" maxlength="1" onkeyup="moveFocus(this, 'otp4')" id="otp3">
+                    <input type="text" name="otp4" maxlength="1" onkeyup="moveFocus(this, 'otp5')" id="otp4">
+                    <input type="text" name="otp5" maxlength="1" onkeyup="moveFocus(this, 'otp6')" id="otp5">
+                    <input type="text" name="otp6" maxlength="1" id="otp6">
+                </div>
+                <div id="otp-error" style="color: #ef4444; font-weight: bold; margin-bottom: 20px; display: none;">Invalid Code! Inputs Cleared.</div>
+                <button type="submit" class="premium-btn">Complete Registration</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        function moveFocus(c, n) { if (c.value.length >= 1) document.getElementById(n).focus(); }
+        document.getElementById('otpForm').onsubmit = async (e) => {
+            e.preventDefault();
+            const res = await fetch('/verify-otp', { method: 'POST', body: new FormData(e.target) });
+            const data = await res.json();
+            if (data.status === 'success') window.location.href = "/dashboard";
+            else {
+                document.getElementById('otp-error').style.display = 'block';
+                document.querySelectorAll('.otp-inputs input').forEach(i => i.value = '');
+                document.getElementById('otp1').focus();
+            }
+        };
+    </script>
+</body>
+</html>
