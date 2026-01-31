@@ -1,0 +1,5 @@
+flask
+flask-limiter
+python-dotenv
+firebase-admin
+gunicorn
