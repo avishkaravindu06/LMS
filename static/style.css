@@ -1,0 +1,274 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --primary: #4f46e5;
+    --primary-hover: #4338ca;
+    --secondary: #9333ea;
+    --accent: #db2777;
+    --glass: rgba(255, 255, 255, 0.95);
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+}
+
+/* 1. Global Reset */
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
+
+body.login-body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* PC සහ Mobile දෙකටම එකම Gradient එක */
+    background: radial-gradient(circle at top right, var(--primary), var(--secondary), var(--accent));
+    background-attachment: fixed; /* Scroll කිරීමේදී පසුබිම වෙනස් නොවීමට */
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    padding: 20px;
+}
+
+/* 2. Top Navigation */
+.top-nav-bar {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+    width: 100%;
+    max-width: 420px;
+    justify-content: center;
+}
+
+.nav-btn {
+    text-decoration: none;
+    padding: 10px 18px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 13px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.3);
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-btn:hover {
+    transform: translateY(-3px);
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* 3. Glass Container */
+.glass-container {
+    background: var(--glass);
+    padding: 40px 30px;
+    border-radius: 24px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+    width: 100%;
+    max-width: 420px;
+    border: 1px solid rgba(255,255,255,1);
+    animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.logo { 
+    font-size: 32px; 
+    font-weight: 800; 
+    text-align: center; 
+    margin-bottom: 25px; 
+    color: var(--text-main);
+}
+.logo span { color: var(--primary); }
+
+/* 4. Tab Buttons */
+.tab-buttons { 
+    display: flex; 
+    background: #f1f5f9; 
+    padding: 5px; 
+    border-radius: 14px; 
+    margin-bottom: 25px; 
+}
+.tab-buttons button { 
+    flex: 1; 
+    border: none; 
+    padding: 12px; 
+    border-radius: 10px; 
+    cursor: pointer; 
+    font-weight: 700; 
+    color: var(--text-muted); 
+    background: transparent; 
+    transition: 0.3s;
+}
+.tab-buttons button.active { 
+    background: white; 
+    color: var(--primary); 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05); 
+}
+
+/* 5. Input Groups */
+.input-group { 
+    position: relative; 
+    margin-bottom: 18px; 
+    width: 100%; 
+}
+
+.input-group i:not(.toggle-password) { 
+    position: absolute; 
+    left: 16px; 
+    top: 50%; 
+    transform: translateY(-50%); 
+    color: #94a3b8; 
+    font-size: 14px; 
+    z-index: 2;
+}
+
+.input-group input { 
+    width: 100%; 
+    padding: 14px 45px 14px 48px; 
+    border: 2px solid #eef2f6; 
+    border-radius: 12px; 
+    font-size: 14px; 
+    font-weight: 600; 
+    outline: none; 
+    transition: 0.3s;
+    background: #f8fafc;
+    color: var(--text-main);
+    display: block;
+}
+
+.input-group input:focus { 
+    border-color: var(--primary); 
+    background: white;
+    box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1); 
+}
+
+.toggle-password {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #94a3b8;
+    font-size: 14px;
+    z-index: 2;
+    padding: 5px;
+}
+
+/* 6. Buttons */
+.premium-btn { 
+    width: 100%; 
+    padding: 14px; 
+    background: var(--primary); 
+    color: white; 
+    border: none; 
+    border-radius: 12px; 
+    font-weight: 700; 
+    font-size: 15px; 
+    cursor: pointer; 
+    transition: 0.3s; 
+    margin-top: 10px;
+}
+.premium-btn:hover { 
+    background: var(--primary-hover); 
+    transform: translateY(-2px); 
+    box-shadow: 0 8px 15px rgba(79, 70, 229, 0.3); 
+}
+
+.google-btn { 
+    width: 100%; 
+    padding: 12px; 
+    background: white; 
+    border: 2px solid #eef2f6; 
+    border-radius: 12px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    gap: 10px; 
+    font-weight: 700; 
+    cursor: pointer; 
+    transition: 0.3s; 
+    color: var(--text-main);
+}
+.google-btn:hover { background: #f8fafc; border-color: #cbd5e1; }
+
+.divider { 
+    margin: 25px 0; 
+    border-bottom: 1px solid #e2e8f0; 
+    position: relative; 
+    text-align: center; 
+}
+.divider span { 
+    position: absolute; 
+    top: -10px; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    background: white; 
+    padding: 0 15px; 
+    font-size: 11px; 
+    color: #94a3b8; 
+    font-weight: 800; 
+    text-transform: uppercase; 
+}
+
+.forgot-container { text-align: right; margin-bottom: 15px; }
+.forgot-link { font-size: 12px; color: var(--text-muted); text-decoration: none; font-weight: 600; }
+
+/* 7. Responsive Fix (Mobile එකට විශේෂයෙන්) */
+@media (max-width: 480px) {
+    body.login-body { 
+        padding: 15px; 
+        /* Mobile එකේදීත් gradient එක එලෙසම තබා ගත්තා */
+        background: radial-gradient(circle at top right, var(--primary), var(--secondary), var(--accent));
+        justify-content: center;
+    }
+
+    .glass-container { 
+        padding: 30px 20px; 
+        border-radius: 20px; 
+        max-width: 100%; 
+        box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    }
+
+    .top-nav-bar { 
+        gap: 10px; 
+        margin-bottom: 20px;
+    }
+    
+    .nav-btn {
+        padding: 8px 12px;
+        font-size: 11px;
+    }
+
+    .logo { font-size: 28px; }
+}
+
+/* OTP Input Styling */
+.otp-inputs {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.otp-inputs input {
+    width: 45px;
+    height: 50px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 700;
+    border: 2px solid #eef2f6;
+    border-radius: 10px;
+    background: #f8fafc;
+}
+.otp-inputs input:focus {
+    border-color: var(--primary);
+    outline: none;
+    background: white;
+}
