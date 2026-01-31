@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Complete Profile | EduPro</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="login-body">
+    <div class="glass-container">
+        <div class="login-box">
+            <h2>Complete Profile</h2>
+            <form action="/save-google-profile" method="POST" onsubmit="return validateProfile()">
+                <div class="input-group"><input type="text" name="mobile" id="p-mobile" placeholder="Mobile (10 Digits)" required></div>
+                <div class="input-group"><input type="text" name="address" id="p-address" placeholder="Address (No numbers, 2+ words)" required></div>
+                <button type="submit" class="premium-btn">Finish Registration</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        function validateProfile() {
+            const m = document.getElementById('p-mobile').value;
+            const a = document.getElementById('p-address').value;
+            if(m.length !== 10 || isNaN(m)) { alert("Invalid Mobile!"); return false; }
+            if(/\d/.test(a) || a.trim().split(/\s+/).length < 2) { alert("Invalid Address!"); return false; }
+            return true;
+        }
+    </script>
+</body>
+</html>
